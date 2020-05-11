@@ -7,16 +7,18 @@ class Character {
     this.gravity = 1;
   }
 
+  // Enables the character to only jump from bottom
   jump() {
     if (this.y == height - this.r) {
       this.velocity = -20;
     }
   }
 
+  // Gravity of the characters jump
   move() {
     this.y += this.velocity;
     this.velocity += this.gravity;
-    this.y = constrain(this.y, 0, height - this.r);
+    this.y = constrain(this.y, 0, height - this.r); // Update this.r to be the height of the second platform in the array. 
   }
 
   show() {
