@@ -7,6 +7,12 @@ class Character {
     this.gravity = 1;
   }
 
+  jump() {
+    if (this.y == height - this.r) {
+      this.velocity = -20;
+    }
+  }
+
   move() {
     this.y += this.velocity;
     this.velocity += this.gravity;
