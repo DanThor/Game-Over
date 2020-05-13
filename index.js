@@ -18,9 +18,10 @@ function draw() {
   background(220);
   character.show();
   character.move();
+  character.update();
 
   // Controll the sequncing of the spawning platforms
-  if (frameCount % 230 == 0) {
+  if (frameCount % 100 == 0) {
     platforms.push(new Platform());
   }
 
@@ -32,7 +33,6 @@ function draw() {
     // Remove platform from array if it's outside the canvas
     if (platforms[i].offCanvas()) {
       platforms.splice(i, 1);
-      console.log(platforms.length);
     }
   }
 }
