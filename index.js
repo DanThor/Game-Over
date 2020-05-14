@@ -5,6 +5,7 @@ function setup() {
   createCanvas(600, 450);
   character = new Character();
   platforms.push(new Platform());
+  console.log(platforms);
 }
 
 // Jumps when pressing the "enter" tab
@@ -18,7 +19,17 @@ function draw() {
   background(220);
   character.show();
   character.move();
-  character.update();
+  // character.update();
+
+  if (character.update()) {
+    character.y = constrain(
+      character.y,
+      0,
+      height - (platforms[0].height + character.r)
+    );
+  } else {
+    character.y = constrain(character.y, 0, height - character.r);
+  }
 
   // Controll the sequncing of the spawning platforms
   if (frameCount % 100 == 0) {
