@@ -38,11 +38,7 @@ class Character {
   }
 
   collide() {
-    if (
-      (this.x + this.r >= platforms[1].x &&
-        this.y >= height - platforms[1].height) ||
-      this.y + this.r >= height
-    ) {
+    if (this.y - this.r >= height) {
       return true;
     }
   }
