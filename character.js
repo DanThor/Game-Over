@@ -28,21 +28,22 @@ class Character {
     rect(this.x, this.y, this.r, this.r);
   }
 
-  update() {
-    // console.log(platforms[0].x + platforms[0].w);
-    // console.log(platforms[0].height);
+  intersect() {
     if (
-      // character.x == platforms[0].x ||
       this.y > platforms[0].height &&
       this.x <= platforms[0].x + platforms[0].w
     ) {
-      // console.log("On platform!");
       return true;
-      // this.y = constrain(this.y, 0, height - (platforms[0].height + this.r));
-    } else {
-      return false;
-      // console.log("not on box");
-      // this.y = constrain(this.y, 0, height - this.r);
+    }
+  }
+
+  collide() {
+    if (
+      (this.x + this.r >= platforms[1].x &&
+        this.y >= height - platforms[1].height) ||
+      this.y + this.r >= height
+    ) {
+      return true;
     }
   }
 }

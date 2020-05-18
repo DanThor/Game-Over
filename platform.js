@@ -1,8 +1,8 @@
 class Platform {
-  constructor() {
-    this.height = Math.floor(random(height / 2)); // Can't jump 50% so add a minus param that make it jumpable
-    this.x = width;
-    this.w = width / 2;
+  constructor(h = Math.floor(random(height / 2)), x = width, w = width / 2) {
+    this.height = h;
+    this.x = x;
+    this.w = w;
     this.speed = 4;
   }
 
