@@ -7,7 +7,7 @@ class Character {
     this.gravity = 1;
   }
 
-  // Enables the character to only jump from bottom
+  // Enables the character to jump from bottom or on a block
   jump() {
     if (
       this.y == height - this.r ||
@@ -28,17 +28,22 @@ class Character {
     rect(this.x, this.y, this.r, this.r);
   }
 
-  update() {
+  intersect() {
     if (
-      // character.x == platforms[0].x ||
-      height - character.y >=
-      platforms[0].height
+      this.y > platforms[0].height &&
+      this.x <= platforms[0].x + platforms[0].w
     ) {
-      console.log("On platform!");
-      this.y = constrain(this.y, 0, height - (platforms[0].height + this.r));
-    } else {
-      console.log("not on box");
-      this.y = constrain(this.y, 0, height - this.r); // Update this.r to be the height of the second platform in the array.
+      return true;
+    }
+  }
+
+  collide() {
+    if (
+      (this.x + this.r >= platforms[1].x &&
+        this.y >= height - platforms[1].height) ||
+      this.y + this.r >= height
+    ) {
+      return true;
     }
   }
 }
