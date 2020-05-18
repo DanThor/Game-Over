@@ -27,8 +27,6 @@ function draw() {
       0,
       height - (platforms[0].height + character.r)
     );
-  } else {
-    character.y = constrain(character.y, 0, height - character.r);
   }
 
   if (platforms.length > 1) {
