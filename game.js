@@ -1,3 +1,5 @@
+"use strict";
+
 class Game {
   constructor() {
     this.score = 0;
@@ -9,20 +11,32 @@ class Game {
   }
 
   startScreen() {
+    tint(255, 127);
+    textSize(72);
+    fill("#3d6090");
+    textStyle(BOLD);
+    text("SKY DINO", 135, 130);
     textSize(32);
-    fill(0, 102, 153);
-    text("Press S to start game", 150, 225);
+    fill("#3d6090");
+    textStyle(BOLD);
+    text("Press S to start the game", 115, 220);
     textSize(24);
-    fill(0, 102, 153);
+    fill("#3d6090");
     text("Press SPACE to jump", 185, 270);
   }
 
   restartScreen() {
+    // tint(255, 127);
+    textSize(42);
+    textStyle(BOLD);
+    fill("#3d6090");
+    text("Game Over", 200, 75);
     textSize(32);
-    fill(0, 102, 153);
-    text("Game Over", 150, 225);
-    textSize(24);
-    fill(0, 102, 153);
-    text(`Score: ${this.score}`, 185, 270);
+    fill("#3d6090");
+    text("Score: ", 205, 125);
+    textSize(32);
+    fill("#3d6090");
+    textStyle(BOLD);
+    text("Press S to restart the game", 110, 200);
   }
 }
