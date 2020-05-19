@@ -23,6 +23,6 @@ class Game {
     text("Game Over", 150, 225);
     textSize(24);
     fill(0, 102, 153);
-    text("Score: ", 185, 270);
+    text(`Score: ${this.score}`, 185, 270);
   }
 }
