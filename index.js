@@ -4,9 +4,9 @@ let characterSprite;
 let backgroundImg;
 let platformImg;
 let character;
-let startCount = 0;
 let platforms = [];
 let start;
+let score;
 const game = new Game();
 
 function preload() {
@@ -73,6 +73,7 @@ function draw() {
       if (platforms[i].offCanvas()) {
         // Make this splice later
         platforms.splice(i, 1);
+        game.score++;
       }
     }
   }
