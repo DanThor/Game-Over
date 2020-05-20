@@ -6,8 +6,11 @@ let platformImg;
 let character;
 let platforms = [];
 let start;
-let score;
 let firstGame = true;
+let spawnFrequency;
+let scoreCount = 0;
+let platformSpeed;
+let platformWidth;
 const game = new Game();
 
 function preload() {
@@ -33,6 +36,10 @@ function keyPressed() {
     platforms = [];
     game.newGame();
     firstGame = false;
+    spawnFrequency = 80;
+    scoreCount = 0;
+    platformSpeed = 5;
+    platformWidth = 0.5;
     loop();
   }
 }
@@ -65,8 +72,19 @@ function draw() {
   }
 
   // Controll the sequncing of the spawning platforms
-  if (frameCount % 80 == 0) {
-    platforms.push(new Platform());
+  if (frameCount % spawnFrequency == 0) {
+    
+    if (game.score % 10 == 0 && game.score > 0) {
+      platformSpeed++;
+      spawnFrequency - 10;
+
+      if (platformWidth < 0.7) {
+        platformWidth = platformWidth + 0.1;
+      }
+    }
+
+    platforms.push(new Platform(Math.floor(random(100, height / 2 - 50)), width, width * platformWidth, platformSpeed));
+
   }
 
   // Draw the platforms
@@ -76,7 +94,6 @@ function draw() {
 
     // Remove platform from array if it's outside the canvas
     if (platforms[i].offCanvas()) {
-      // Make this splice later
       platforms.splice(i, 1);
       game.score++;
     }

@@ -63,7 +63,6 @@ class Character {
 
   collide() {
     if (this.y - this.r >= height) {
-      console.log("Collide!");
       return true;
     }
   }
