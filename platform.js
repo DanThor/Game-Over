@@ -4,12 +4,12 @@ class Platform {
   constructor(
     h = Math.floor(random(100, height / 2 - 50)),
     x = width,
-    w = width / 2
+    w = width * 0.5,
   ) {
     this.height = h;
     this.x = x;
     this.w = w;
-    this.speed = 4;
+    this.speed = 5;
   }
 
   show(platform) {
