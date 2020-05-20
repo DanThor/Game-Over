@@ -1,3 +1,5 @@
+'use strict';
+
 class Game {
   constructor() {
     this.score = 0;
@@ -5,7 +7,7 @@ class Game {
 
   newGame() {
     character = new Character();
-    platforms.push(new Platform(200, 150, width));
+    platforms.push(new Platform(200, 150, width, 5));
   }
 
   startScreen() {

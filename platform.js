@@ -2,15 +2,16 @@
 
 class Platform {
   constructor(
-    h = Math.floor(random(100, height / 2 - 50)),
-    x = width,
-    w = width * 0.5,
+    h,
+    x,
+    w,
+    speed,
   ) {
     this.height = h;
     this.x = x;
     this.w = w;
-    this.speed = 5;
-  }
+    this.speed = speed;
+   }
 
   show(platform) {
     image(platform, this.x, height - this.height, this.w, this.height / 2);
