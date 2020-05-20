@@ -44,23 +44,26 @@ class Character {
       this.y,
       this.r,
       this.r + 10,
-      24 * this.run[this.currentLoopIndex],
+      24 * this.run[this.currentLoopIndex]+1,
       0,
       24
     );
   }
 
   intersect() {
-    if (
-      this.y > platforms[0].height &&
-      this.x < platforms[0].x + platforms[0].w
+      for (let i = 0; i < platforms.length; i++) {
+        if (
+        this.y > platforms[i].height &&
+        this.x > platforms[i].x && this.x < platforms[i].x + platforms[i].w
     ) {
       return true;
     }
   }
+}
 
   collide() {
     if (this.y - this.r >= height) {
+      console.log("Collide!");
       return true;
     }
   }

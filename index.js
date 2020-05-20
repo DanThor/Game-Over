@@ -1,5 +1,5 @@
 "use strict";
-
+let fontRegular;
 let characterSprite;
 let backgroundImg;
 let platformImg;
@@ -10,6 +10,7 @@ let score;
 const game = new Game();
 
 function preload() {
+  fontRegular = loadFont("fonts/arcadeclassic.ttf");
   characterSprite = loadImage("images/DinoSprite.png");
   backgroundImg = loadImage("images/background.png");
   platformImg = loadImage("images/platform.png");
@@ -25,8 +26,10 @@ function keyPressed() {
     character.jump();
   }
 
-  if (key == "s" && !start) {
+  if (key == " " && !start) {
     start = true;
+    game.score = 0;
+    platforms = []; 
     game.newGame();
     loop();
   }
@@ -36,11 +39,11 @@ function draw() {
   clear();
   image(backgroundImg, 0, 0, width, height);
   if (!start) {
-    game.startScreen();
+   game.startScreen();
   } else {
-    noTint();
     character.show(characterSprite);
     character.move();
+    game.showCurrentScore();
 
     if (character.intersect()) {
       character.y = constrain(
@@ -50,17 +53,18 @@ function draw() {
       );
     }
 
-    if (platforms.length > 1) {
+
       if (character.collide()) {
         noLoop();
         platforms = [];
         start = false;
         game.restartScreen();
+        console.log("res");
       }
     }
 
     // Controll the sequncing of the spawning platforms
-    if (frameCount % 100 == 0) {
+    if (frameCount % 80 == 0) {
       platforms.push(new Platform());
     }
 
@@ -77,4 +81,3 @@ function draw() {
       }
     }
   }
-}
