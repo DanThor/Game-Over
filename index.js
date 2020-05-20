@@ -7,6 +7,7 @@ let character;
 let platforms = [];
 let start;
 let score;
+let firstGame = true;
 const game = new Game();
 
 function preload() {
@@ -29,8 +30,9 @@ function keyPressed() {
   if (key == " " && !start) {
     start = true;
     game.score = 0;
-    platforms = []; 
+    platforms = [];
     game.newGame();
+    firstGame = false;
     loop();
   }
 }
@@ -38,8 +40,8 @@ function keyPressed() {
 function draw() {
   clear();
   image(backgroundImg, 0, 0, width, height);
-  if (!start) {
-   game.startScreen();
+  if (!start && firstGame) {
+    game.startScreen();
   } else {
     character.show(characterSprite);
     character.move();
@@ -54,30 +56,29 @@ function draw() {
     }
 
 
-      if (character.collide()) {
-        noLoop();
-        platforms = [];
-        start = false;
-        game.restartScreen();
-        console.log("res");
-      }
-    }
-
-    // Controll the sequncing of the spawning platforms
-    if (frameCount % 80 == 0) {
-      platforms.push(new Platform());
-    }
-
-    // Draw the platforms
-    for (let i = platforms.length - 1; i >= 0; i--) {
-      platforms[i].show(platformImg);
-      platforms[i].update();
-
-      // Remove platform from array if it's outside the canvas
-      if (platforms[i].offCanvas()) {
-        // Make this splice later
-        platforms.splice(i, 1);
-        game.score++;
-      }
+    if (character.collide()) {
+      platforms = [];
+      start = false;
+      game.restartScreen();
+      noLoop();
     }
   }
+
+  // Controll the sequncing of the spawning platforms
+  if (frameCount % 80 == 0) {
+    platforms.push(new Platform());
+  }
+
+  // Draw the platforms
+  for (let i = platforms.length - 1; i >= 0; i--) {
+    platforms[i].show(platformImg);
+    platforms[i].update();
+
+    // Remove platform from array if it's outside the canvas
+    if (platforms[i].offCanvas()) {
+      // Make this splice later
+      platforms.splice(i, 1);
+      game.score++;
+    }
+  }
+}
