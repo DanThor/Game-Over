@@ -15,7 +15,7 @@ Our game is inspired by the famous dinosaur running game in chrome but this time
 
 ## Preview
 
-<img src="https://imgur.com/a/uj8KzQM" width="100%">
+<img src="https://i.imgur.com/47qPwWg.png" width="100%">
 
 ## Pull requests
 
