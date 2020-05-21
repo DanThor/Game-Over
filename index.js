@@ -1,6 +1,6 @@
 "use strict";
-let gameOver;
-let jump;
+let gameOverSound;
+let jumpSound;
 let themeSong;
 let fontRegular;
 let characterSprite;
@@ -17,7 +17,9 @@ let platformWidth;
 const game = new Game();
 
 function preload() {
-  // themeSong = loadSound("audio/game_theme.mp3");
+  jumpSound = loadSound("audio/jump.mp3");
+  gameOverSound = loadSound("audio/game_over.mp3");
+  themeSong = loadSound("audio/game_theme.mp3");
   fontRegular = loadFont("fonts/arcadeclassic.ttf");
   characterSprite = loadImage("images/DinoSprite.png");
   backgroundImg = loadImage("images/background.png");
@@ -26,12 +28,15 @@ function preload() {
 
 function setup() {
   createCanvas(600, 450);
-  // themeSong.play();
+  themeSong.setVolume(0.2);
+  themeSong.loop();
 }
 
 // Jumps when pressing the "enter" tab
 function keyPressed() {
   if (key == " " && start) {
+    jumpSound.play();
+    jumpSound.setVolume(0.1);
     character.jump();
   }
 
@@ -68,6 +73,8 @@ function draw() {
     }
 
     if (character.collide()) {
+      gameOverSound.play();
+      gameOverSound.setVolume(0.05);
       platforms = [];
       start = false;
       game.restartScreen();
