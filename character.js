@@ -56,7 +56,7 @@ class Character {
     for (let i = 0; i < platforms.length; i++) {
       if (
         this.y > platforms[i].height &&
-        this.x > platforms[i].x &&
+        this.x + this.size / 2 > platforms[i].x &&
         this.x < platforms[i].x + platforms[i].w
       ) {
         return true;
