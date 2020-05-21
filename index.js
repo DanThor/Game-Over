@@ -1,4 +1,7 @@
 "use strict";
+let gameOver;
+let jump;
+let themeSong;
 let fontRegular;
 let characterSprite;
 let backgroundImg;
@@ -14,6 +17,7 @@ let platformWidth;
 const game = new Game();
 
 function preload() {
+  // themeSong = loadSound("audio/game_theme.mp3");
   fontRegular = loadFont("fonts/arcadeclassic.ttf");
   characterSprite = loadImage("images/DinoSprite.png");
   backgroundImg = loadImage("images/background.png");
@@ -22,6 +26,7 @@ function preload() {
 
 function setup() {
   createCanvas(600, 450);
+  // themeSong.play();
 }
 
 // Jumps when pressing the "enter" tab
@@ -62,7 +67,6 @@ function draw() {
       );
     }
 
-
     if (character.collide()) {
       platforms = [];
       start = false;
@@ -73,7 +77,6 @@ function draw() {
 
   // Controll the sequncing of the spawning platforms
   if (frameCount % spawnFrequency == 0) {
-    
     if (game.score % 10 == 0 && game.score > 0) {
       platformSpeed++;
       spawnFrequency - 10;
@@ -83,8 +86,14 @@ function draw() {
       }
     }
 
-    platforms.push(new Platform(Math.floor(random(100, height / 2 - 50)), width, width * platformWidth, platformSpeed));
-
+    platforms.push(
+      new Platform(
+        Math.floor(random(100, height / 2 - 50)),
+        width,
+        width * platformWidth,
+        platformSpeed
+      )
+    );
   }
 
   // Draw the platforms
