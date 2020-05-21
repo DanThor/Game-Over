@@ -2,8 +2,8 @@
 
 class Character {
   constructor() {
-    this.r = 60; // maybe change the name so size instead or r for radius?
-    this.x = this.r;
+    this.size = 60; // maybe change the name so size instead or r for radius?
+    this.x = this.size;
     this.y = 0;
     this.velocity = 0;
     this.gravity = 1;
@@ -13,11 +13,11 @@ class Character {
     this.currentLoopIndex = 0;
   }
 
-  // Enables the character to jump from bottom or on a block
+  // Enables the character to jump on a block
   jump() {
     if (
-      this.y == height - this.r ||
-      height - (this.y + this.r) == platforms[0].height
+      this.y == height - this.size ||
+      height - (this.y + this.size) == platforms[0].height
     ) {
       this.velocity = -20;
     }
@@ -29,6 +29,7 @@ class Character {
     this.velocity += this.gravity;
   }
 
+  // Animates the character sprite
   show(characterSprite) {
     this.frames++;
     if (this.frames >= this.frameLimit) {
@@ -42,27 +43,30 @@ class Character {
       characterSprite,
       this.x,
       this.y,
-      this.r,
-      this.r + 10,
-      24 * this.run[this.currentLoopIndex]+1,
+      this.size,
+      this.size + 10,
+      24 * this.run[this.currentLoopIndex] + 1,
       0,
       24
     );
   }
 
+  // Checking if the character is on a platform
   intersect() {
-      for (let i = 0; i < platforms.length; i++) {
-        if (
+    for (let i = 0; i < platforms.length; i++) {
+      if (
         this.y > platforms[i].height &&
-        this.x > platforms[i].x && this.x < platforms[i].x + platforms[i].w
-    ) {
-      return true;
+        this.x > platforms[i].x &&
+        this.x < platforms[i].x + platforms[i].w
+      ) {
+        return true;
+      }
     }
   }
-}
 
+  // Checking if the character collide with the ground
   collide() {
-    if (this.y - this.r >= height) {
+    if (this.y - this.size >= height) {
       return true;
     }
   }

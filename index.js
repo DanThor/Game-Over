@@ -1,17 +1,17 @@
 "use strict";
-let fontRegular;
-let characterSprite;
-let backgroundImg;
-let platformImg;
-let character;
-let platforms = [];
-let start;
-let firstGame = true;
-let spawnFrequency;
-let scoreCount = 0;
-let platformSpeed;
-let platformWidth;
 const game = new Game();
+let fontRegular,
+  characterSprite,
+  backgroundImg,
+  platformImg,
+  character,
+  platforms = [],
+  start,
+  firstGame = true,
+  spawnFrequency,
+  scoreCount = 0,
+  platformSpeed,
+  platformWidth;
 
 function preload() {
   fontRegular = loadFont("fonts/arcadeclassic.ttf");
@@ -24,7 +24,7 @@ function setup() {
   createCanvas(600, 450);
 }
 
-// Jumps when pressing the "enter" tab
+// Starts the game or make the character jump when pressing the "space" tab
 function keyPressed() {
   if (key == " " && start) {
     character.jump();
@@ -54,15 +54,16 @@ function draw() {
     character.move();
     game.showCurrentScore();
 
+    // Checking if character is on platfrom and allow it to stay on the platform
     if (character.intersect()) {
       character.y = constrain(
         character.y,
         0,
-        height - (platforms[0].height + character.r)
+        height - (platforms[0].height + character.size)
       );
     }
 
-
+    // Ends the game when character collide with bottom of the screen
     if (character.collide()) {
       platforms = [];
       start = false;
@@ -73,7 +74,7 @@ function draw() {
 
   // Controll the sequncing of the spawning platforms
   if (frameCount % spawnFrequency == 0) {
-    
+    //Increase the platform speed and width every 10th platform
     if (game.score % 10 == 0 && game.score > 0) {
       platformSpeed++;
       spawnFrequency - 10;
@@ -82,9 +83,15 @@ function draw() {
         platformWidth = platformWidth + 0.1;
       }
     }
-
-    platforms.push(new Platform(Math.floor(random(100, height / 2 - 50)), width, width * platformWidth, platformSpeed));
-
+    // Spawns new platform
+    platforms.push(
+      new Platform(
+        Math.floor(random(100, height / 2 - 50)),
+        width,
+        width * platformWidth,
+        platformSpeed
+      )
+    );
   }
 
   // Draw the platforms
