@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class Game {
   constructor() {
@@ -11,11 +11,15 @@ class Game {
   }
 
   startScreen() {
+    textSize(62);
+    fill("#bc4d4f");
+    textFont(fontRegular);
+    text("Dino  Sky  Jumper", 75, 125);
     textSize(32);
     fill(255);
     textFont(fontRegular);
     text("Press  space  to  start  game", 110, 225);
-    stroke('#222222');
+    stroke("#222222");
     strokeWeight(2);
     textSize(24);
     fill(255);
@@ -27,7 +31,7 @@ class Game {
     fill(255);
     textFont(fontRegular);
     text("Game Over", 230, 165);
-    stroke('#222222');
+    stroke("#222222");
     textSize(24);
     fill(255);
     text(`Score   ${this.score} `, 265, 200);
@@ -46,5 +50,4 @@ class Game {
     fill(255);
     text(this.score, 560, 40);
   }
-
 }

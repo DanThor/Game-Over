@@ -1,6 +1,9 @@
 "use strict";
 const game = new Game();
-let fontRegular,
+let gameOverSound,
+  jumpSound,
+  themeSong,
+  fontRegular,
   characterSprite,
   backgroundImg,
   platformImg,
@@ -14,6 +17,9 @@ let fontRegular,
   platformWidth;
 
 function preload() {
+  jumpSound = loadSound("audio/jump.mp3");
+  gameOverSound = loadSound("audio/game_over.mp3");
+  themeSong = loadSound("audio/game_theme.mp3");
   fontRegular = loadFont("fonts/arcadeclassic.ttf");
   characterSprite = loadImage("images/DinoSprite.png");
   backgroundImg = loadImage("images/background.png");
@@ -22,11 +28,15 @@ function preload() {
 
 function setup() {
   createCanvas(600, 450);
+  themeSong.setVolume(0.2);
+  themeSong.loop();
 }
 
 // Starts the game or make the character jump when pressing the "space" tab
 function keyPressed() {
   if (key == " " && start) {
+    jumpSound.play();
+    jumpSound.setVolume(0.1);
     character.jump();
   }
 
@@ -65,6 +75,8 @@ function draw() {
 
     // Ends the game when character collide with bottom of the screen
     if (character.collide()) {
+      gameOverSound.play();
+      gameOverSound.setVolume(0.05);
       platforms = [];
       start = false;
       game.restartScreen();

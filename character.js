@@ -2,7 +2,7 @@
 
 class Character {
   constructor() {
-    this.size = 60; // maybe change the name so size instead or r for radius?
+    this.size = 60;
     this.x = this.size;
     this.y = 0;
     this.velocity = 0;
