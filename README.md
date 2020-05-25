@@ -61,7 +61,27 @@ Our game is inspired by the famous dinosaur running game in chrome but this time
 
 ## Code review
 
-* Add code review here plz
+ - [index.js Line 37](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/index.js#L37)
+Maybe variable start could be called something else like isPlaying to clearly show its a bool
+- [index.js Line 19](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/index.js#L19)
+Maybe move this into a preload.js
+- [index.js Line 36](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/index.js#L36)
+Maybe turn this into a function StartGame.js
+- [index.js Line 92](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/index.js#L92)
+ spawnFrequency - 10 doesn’t appear to fill any function?
+- [index.js Line 95](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/index.js#L95)
+Could use platformWidth += 0.1, just a little bit shorter and cleaner.
+- [Game.js](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/game.js#L1)
+Code in this file is not very DRY, maybe create a function that sets up the parts that are the same everywhere.
+- [Character.js Line 17-30](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/character.js#L17)
+Velocity is used for the speed moving up while jumping, technically the character is not moving forwards ever, but I found it a bit confusing that velocity wasn’t the general running speed. Maby it could have been called something like velocityY or ascensionSpeed
+- [Character.js Line 55](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/character.js#L55)
+If the character is on the same x coordinates as a platform but below it maby you should just fall right through, right now its acting a bit weird if you time the jump so you hit the bottom edge of the platform.
+- [platform.js Line 3](https://github.com/DanThor/Game-Over/blob/f8b135b1399237cc3bf4264793d9df295db9c239/platform.js#L3)
+This.height and this.w for width feels a bit inconsistent, maby use h and w or height and width.
+- It was hard to find things to comment about because your code is very clean and well commented. Great job!
+
+
 
 ## Authors
 
