@@ -40,11 +40,16 @@ Our game is inspired by the famous dinosaur running game in chrome but this time
 - [16 - Fixed Landing On Edge Bug](https://github.com/DanThor/Game-Over/pull/16)
 - [17 - Sound Effects](https://github.com/DanThor/Game-Over/pull/17)
 - [18 - Updated README With Pull Requests And Testers](https://github.com/DanThor/Game-Over/pull/18)
+- [19 - Fixed misstake in order of pull requests and deleted min.sound.p5](https://github.com/DanThor/Game-Over/pull/19)
+- [20 - Added Gameboy SVG instead](https://github.com/DanThor/Game-Over/pull/20)
+- [21 - Revert "Added Gameboy SVG instead"](https://github.com/DanThor/Game-Over/pull/21)
+- [22 - Moved canvas, added padding and a SVG-pattern background](https://github.com/DanThor/Game-Over/pull/22)
+- [23 - Small fixes to css](https://github.com/DanThor/Game-Over/pull/23)
 
 ## Testers with programming skills
 
-- Group 1
-- Group 2
+- [Oskar Sjölin Joss](https://github.com/OskarJoss) & [Terese Thulin](https://github.com/teresethulin)
+- [Camilla Kylmänen Sjörén](https://github.com/camiwd) & [Maja Alin](https://github.com/majaalin)
 
 ## Testers without programming skills
 
@@ -55,6 +60,8 @@ Our game is inspired by the famous dinosaur running game in chrome but this time
 - Hampus Cannerfors
 
 ## Code review
+
+* Add code review here plz
 
 ## Authors
 
